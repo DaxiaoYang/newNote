@@ -347,5 +347,31 @@ broker会拒绝sequenceId小的消息
 
 
 
+**动态配置**
+
+静态配置的问题：broker.conf中的静态配置需要重启broker生效 且只在当前Broker生效 重启还会触发bundle的转移
+
+方案：所有broker都监听zookeeper（注册一个watcher） 修改zookeeper中的动态配置项即可
+
+
+
+策略级别：小范围的级别优先生效
+
+- namespace：存储在zk中
+
+- broker：动态配置也存在在zk中 静态配置在文件中
+
+- topic：存储在持久化topic中（使用压缩主题）
+
+  
+
+
+
+
+
+
+
+
+
 
 
